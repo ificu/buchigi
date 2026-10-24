@@ -1,0 +1,78 @@
+/* Blockpaper design tokens (colors, typography, spacing, radii, elevation) */
+:root{
+/* Monochrome core */
+--color-black:#000000;
+--color-white:#ffffff;
+--color-primary:var(--color-black);
+--color-on-primary:var(--color-white);
+--color-canvas:var(--color-white);
+--color-inverse-canvas:var(--color-black);
+--color-surface-soft:#f5f5f5;
+--color-hairline:#e2e2e2;
+--color-hairline-soft:#efefef;
+--color-ink:var(--color-black);
+--color-inverse-ink:var(--color-white);
+--color-on-inverse-soft:rgba(255,255,255,0.16);
+/* Color blocks (approximations) */
+--color-block-lime:#e4ff97;
+--color-block-lilac:#d9caff;
+--color-block-cream:#f6efe2;
+--color-block-mint:#c6f1da;
+--color-block-pink:#ffd1e8;
+--color-block-coral:#ff9b7d;
+--color-block-navy:#1f1a5c;
+/* Accent + semantic */
+--color-accent-magenta:#e93d9b;
+--color-semantic-success:#14ae5c;
+--color-overlay-scrim:rgba(0,0,0,0.6);
+--color-focus-ring:#000000;
+/* Semantic aliases */
+--surface-page:var(--color-canvas);
+--surface-card:var(--color-canvas);
+--surface-tile:var(--color-surface-soft);
+--surface-inverse:var(--color-inverse-canvas);
+--text-body:var(--color-ink);
+--text-inverse:var(--color-inverse-ink);
+--border-default:var(--color-hairline);
+--border-soft:var(--color-hairline-soft);
+
+/* Typography */
+--font-sans:"Inter","Pretendard Variable",Pretendard,"SF Pro Display",system-ui,helvetica,sans-serif;
+--font-mono:"JetBrains Mono","Pretendard Variable","SF Mono",menlo,monospace;
+--weight-light:320;
+--weight-book:330;
+--weight-regular:340;
+--weight-medium:480;
+--weight-semibold:540;
+--weight-bold:700;
+--display-xl-size:86px;--display-xl-weight:340;--display-xl-lh:1.00;--display-xl-ls:-1.72px;
+--display-lg-size:64px;--display-lg-weight:340;--display-lg-lh:1.10;--display-lg-ls:-0.96px;
+--headline-size:26px;--headline-weight:540;--headline-lh:1.35;--headline-ls:-0.26px;
+--subhead-size:26px;--subhead-weight:340;--subhead-lh:1.35;--subhead-ls:-0.26px;
+--card-title-size:24px;--card-title-weight:700;--card-title-lh:1.45;--card-title-ls:0;
+--body-lg-size:20px;--body-lg-weight:330;--body-lg-lh:1.40;--body-lg-ls:-0.14px;
+--body-size:18px;--body-weight:320;--body-lh:1.45;--body-ls:-0.26px;
+--body-sm-size:16px;--body-sm-weight:330;--body-sm-lh:1.45;--body-sm-ls:-0.14px;
+--link-size:20px;--link-weight:480;--link-lh:1.40;--link-ls:-0.10px;
+--button-size:20px;--button-weight:480;--button-lh:1.40;--button-ls:-0.10px;
+--eyebrow-size:18px;--eyebrow-weight:400;--eyebrow-lh:1.30;--eyebrow-ls:0.54px;
+--caption-size:12px;--caption-weight:400;--caption-lh:1.00;--caption-ls:0.60px;
+
+/* Spacing */
+--space-hair:1px;--space-xxs:4px;--space-xs:8px;--space-sm:12px;--space-md:16px;--space-lg:24px;--space-xl:32px;--space-xxl:48px;--space-section:96px;
+--container-max:1280px;--gutter-desktop:48px;--gutter-mobile:24px;
+--nav-height:56px;--marquee-height:36px;
+
+/* Radii */
+--radius-xs:2px;--radius-sm:6px;--radius-md:8px;--radius-lg:24px;--radius-xl:32px;--radius-pill:50px;--radius-full:9999px;
+
+/* Elevation + motion */
+--elevation-0:none;
+--elevation-1:inset 0 0 0 1px var(--color-hairline);
+--elevation-2:0 4px 16px rgba(0,0,0,0.06);
+--elevation-3:0 24px 64px rgba(0,0,0,0.24);
+--ease-standard:cubic-bezier(0.2,0,0,1);
+--duration-fast:120ms;
+--duration-base:200ms;
+--press-scale:0.97;
+}
