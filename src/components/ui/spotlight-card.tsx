@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
 
-export type GlowColor = 'blue' | 'purple' | 'green' | 'red' | 'orange';
+export type GlowColor = 'blue' | 'purple' | 'green' | 'red' | 'orange' | 'coffee';
 
 interface GlowCardProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'style'> {
   children: ReactNode;
@@ -23,7 +23,8 @@ const glowColorMap = {
   purple: { base: 280, spread: 300 },
   green: { base: 120, spread: 200 },
   red: { base: 0, spread: 200 },
-  orange: { base: 30, spread: 200 }
+  orange: { base: 30, spread: 200 },
+  coffee: { base: 18, spread: 18 } // stays in the caramel/brown range across the screen
 };
 
 const sizeMap = {

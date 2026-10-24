@@ -48,9 +48,6 @@ export default function App() {
         linkIcons={MENU_ICONS}
         secondaryIcon={<Headset {...iconProps} />}
         menuGroups={[["서비스 소개", "앱 미리보기", "이용 후기"], ["요금제", "자주 묻는 질문"]]}
-        style={{ background: "#B9CEF0" }}
-        secondaryStyle={{ borderRadius: 16 }}
-        primaryStyle={{ borderRadius: 16 }}
       />
       <MarqueeStrip items={["추억 되새김 음성 대화", "가족 기념일 알림", "‘1년 전 오늘’ 추억 영상", "자녀에게 대화 기록 전달", "검사가 아닌 일상 대화", "앱 설치 없이 전화로"]} />
       <main>

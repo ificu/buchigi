@@ -20,20 +20,20 @@ export function Intro() {
       <ColorBlock color="lime" eyebrow="서비스 소개" title="부모님에게 새로 생긴 AI 친구" body="가족관계·생일·사진만 등록하면 준비 끝">
         <div className="g3">
           {FEATURES.map(([t, b, m], i) => (
-            <GlowCard key={t} customSize glowColor="green" backdrop="#fff" radius={24} className="flex flex-col gap-[14px] rounded-[24px] p-6 shadow-none backdrop-blur-none">
-              <div className="t-eyebrow">0{i + 1}</div>
+            <GlowCard key={t} customSize glowColor="coffee" backdrop="#fff" radius={20} className="flex flex-col gap-[14px] rounded-[20px] p-6 shadow-none backdrop-blur-none">
+              <span style={{ width: 44, height: 44, borderRadius: "var(--radius-md)", background: "var(--color-coffee-soft)", color: "var(--color-coffee)", display: "inline-flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 16 }}>0{i + 1}</span>
               <h3 className="t-headline">{t}</h3>
               <p className="read">{b}</p>
-              <div className="t-body-sm" style={{ marginTop: "auto", paddingTop: 14, borderTop: "1px solid var(--color-hairline-soft)", fontWeight: 480 }}>{m}</div>
+              <div className="t-body-sm" style={{ marginTop: "auto", paddingTop: 14, borderTop: "1px solid var(--color-hairline-soft)", fontWeight: 600, color: "var(--color-coffee-strong)" }}>{m}</div>
             </GlowCard>
           ))}
         </div>
       </ColorBlock>
       <div className="g3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", marginTop: "var(--space-md)" }}>
         {PROMISES.map(([t, b]) => (
-          <div key={t} className="tile" style={{ padding: "var(--space-lg)", display: "flex", gap: 12 }}>
+          <div key={t} className="tile" style={{ padding: "var(--space-lg)", display: "flex", gap: 12, background: "var(--surface-card)", boxShadow: "var(--elevation-1)" }}>
             <Checkmark size={22} style={{ marginTop: 4 }} />
-            <div><div className="t-link">{t}</div><div className="t-body-sm">{b}</div></div>
+            <div><div className="t-link">{t}</div><div className="t-body-sm" style={{ color: "var(--text-muted)" }}>{b}</div></div>
           </div>
         ))}
       </div>

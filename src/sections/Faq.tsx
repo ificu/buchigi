@@ -12,16 +12,16 @@ export function Faq() {
   const [open, setOpen] = useState(0);
   return (
     <section className="wrap sec" id="faq">
-      <GlowCard customSize glowColor="blue" backdrop="var(--color-block-lime)" radius={24} className="block rounded-[24px] p-0 shadow-none backdrop-blur-none">
-      <ColorBlock color="lime" eyebrow="자주 묻는 질문" title="궁금한 점을 모았어요" style={{ borderRadius: 21 }}>
+      <GlowCard customSize glowColor="coffee" backdrop="var(--color-block-lime)" radius={20} className="block rounded-[20px] p-0 shadow-none backdrop-blur-none">
+      <ColorBlock color="lime" eyebrow="자주 묻는 질문" title="궁금한 점을 모았어요" style={{ borderRadius: 17 }}>
         <div>
           {QA.map(([q, a], i) => (
-            <div key={q} style={{ borderTop: "1px solid rgba(0,0,0,.15)" }}>
+            <div key={q} style={{ borderTop: "1px solid rgba(198,124,78,.25)" }}>
               <button onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i} className="faq-btn"
                 style={{ all: "unset", cursor: "pointer", width: "100%", minHeight: 72, display: "flex", justifyContent: "space-between", alignItems: "center", gap: 20 }}>
-                <span className="t-headline faq-q">{q}</span><span className="faq-sign" style={{ fontWeight: 320 }}>{open === i ? "−" : "+"}</span>
+                <span className="t-headline faq-q">{q}</span><span className="faq-sign" aria-hidden="true" style={{ fontWeight: 400 }}>{open === i ? "−" : "+"}</span>
               </button>
-              {open === i && <p className="read faq-a" style={{ paddingBottom: 24, maxWidth: 820 }}>{a}</p>}
+              {open === i && <p className="read faq-a" style={{ margin: 0, paddingBottom: 24, maxWidth: 820, color: "var(--color-roast)" }}>{a}</p>}
             </div>
           ))}
         </div>

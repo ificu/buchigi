@@ -19,12 +19,12 @@ const firstColumn = testimonials.slice(0, 3);
 const secondColumn = testimonials.slice(3, 6);
 const thirdColumn = testimonials.slice(6, 9);
 
-const card = "bg-white border-transparent shadow-none read max-[560px]:p-6";
+const card = "bg-white text-[var(--color-ink)] border-transparent shadow-none read max-[560px]:p-6";
 
 export function Reviews() {
   return (
     <section className="wrap sec" id="reviews">
-      <ColorBlock color="cream">
+      <ColorBlock color="black" style={{ background: "var(--gradient-dark)" }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -34,13 +34,13 @@ export function Reviews() {
         >
           <div className="t-eyebrow">이용 후기</div>
           <h2 className="t-display-lg">가족들이 먼저 달라진 걸 느꼈어요</h2>
-          <p className="t-subhead">부모님과 함께 쓰고 있는 자녀분들의 이야기예요.</p>
+          <p className="t-subhead" style={{ color: "var(--color-inverse-ink-soft)" }}>부모님과 함께 쓰고 있는 자녀분들의 이야기예요.</p>
         </motion.div>
 
         <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)] max-h-[680px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} cardClassName={card} glowColor="orange" duration={15} />
-          <TestimonialsColumn testimonials={secondColumn} cardClassName={card} glowColor="orange" className="hidden md:block" duration={19} />
-          <TestimonialsColumn testimonials={thirdColumn} cardClassName={card} glowColor="orange" className="hidden lg:block" duration={17} />
+          <TestimonialsColumn testimonials={firstColumn} cardClassName={card} glowColor="coffee" duration={15} />
+          <TestimonialsColumn testimonials={secondColumn} cardClassName={card} glowColor="coffee" className="hidden md:block" duration={19} />
+          <TestimonialsColumn testimonials={thirdColumn} cardClassName={card} glowColor="coffee" className="hidden lg:block" duration={17} />
         </div>
       </ColorBlock>
     </section>

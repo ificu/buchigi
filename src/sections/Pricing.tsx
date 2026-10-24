@@ -24,8 +24,8 @@ export function Pricing() {
         viewport={{ once: true }}
       >
         <div className="t-eyebrow">요금제</div>
-        <h2 className="t-display-lg">커피 두 잔 값으로 매주 안부를 전해요</h2>
-        <p className="t-subhead">처음 2주는 무료. 마음에 들지 않으면 언제든 해지할 수 있어요.</p>
+        <h2 className="t-display-lg"><span className="t-accent">커피 두 잔</span> 값으로 매주 안부를 전해요</h2>
+        <p className="t-subhead" style={{ color: "var(--color-roast)" }}>처음 2주는 무료. 마음에 들지 않으면 언제든 해지할 수 있어요.</p>
       </motion.div>
       <PillTabs options={["월간 결제", "연간 결제"]} value={period} onChange={setPeriod} style={{ marginBottom: "var(--space-xl)" }} />
       <div className="g3">
@@ -38,7 +38,7 @@ export function Pricing() {
             transition={{ duration: 0.8, delay: 0.15 + i * 0.12, ease: EASE }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <GlowCard customSize glowColor="blue" backdrop="var(--color-canvas)" radius={24} className="flex flex-1 rounded-[24px] p-0 shadow-none backdrop-blur-none">
+            <GlowCard customSize glowColor="coffee" backdrop="var(--color-canvas)" radius={20} className="flex flex-1 rounded-[20px] p-0 shadow-none backdrop-blur-none">
             <PricingCard
               tier={t.tier}
               // Re-keying on the value replays the slide-in whenever 월간/연간 is switched.
@@ -48,7 +48,7 @@ export function Pricing() {
               features={t.f}
               highlighted={t.hi}
               cta={<Button fullWidth variant={t.hi ? "primary" : "outline"}>{t.cta}</Button>}
-              style={{ padding: "var(--space-xl)", flex: 1, borderRadius: 21 }}
+              style={{ padding: "var(--space-xl)", flex: 1, borderRadius: 17 }}
             />
             </GlowCard>
           </motion.div>

@@ -3,12 +3,12 @@ import { useState, type ButtonHTMLAttributes, type CSSProperties, type ReactNode
 export type ButtonVariant = "primary" | "secondary" | "outline" | "tertiary" | "magenta" | "inverse";
 
 const VARIANTS: Record<ButtonVariant, CSSProperties> = {
-  primary: { background: "var(--color-primary)", color: "var(--color-on-primary)", padding: "10px 20px" },
-  secondary: { background: "var(--color-canvas)", color: "var(--color-ink)", padding: "8px 18px 10px" },
-  outline: { background: "var(--color-canvas)", color: "var(--color-ink)", padding: "10px 20px", boxShadow: "inset 0 0 0 1px var(--color-ink)" },
-  tertiary: { background: "transparent", color: "var(--color-ink)", padding: "var(--space-xs) var(--space-sm)", borderRadius: "var(--radius-full)" },
-  magenta: { background: "var(--color-accent-magenta)", color: "var(--color-on-primary)", padding: "10px 18px" },
-  inverse: { background: "var(--color-canvas)", color: "var(--color-ink)", padding: "10px 20px" },
+  primary: { background: "var(--color-primary)", color: "var(--color-on-primary)", padding: "14px 24px" },
+  secondary: { background: "var(--color-coffee-soft)", color: "var(--color-coffee-strong)", padding: "14px 24px" },
+  outline: { background: "var(--color-canvas)", color: "var(--color-ink)", padding: "14px 24px", boxShadow: "inset 0 0 0 1px var(--color-hairline)" },
+  tertiary: { background: "transparent", color: "var(--color-ink)", padding: "var(--space-xs) var(--space-sm)", borderRadius: "var(--radius-md)" },
+  magenta: { background: "var(--color-accent-magenta)", color: "var(--color-on-primary)", padding: "14px 24px" },
+  inverse: { background: "var(--color-canvas)", color: "var(--color-ink)", padding: "14px 24px" },
 };
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -37,14 +37,17 @@ export function Button({ variant = "primary", size = "md", fullWidth = false, di
         border: "none", cursor: disabled ? "not-allowed" : "pointer",
         fontFamily: "var(--font-sans)", fontSize: sm ? 16 : "var(--button-size)",
         fontWeight: "var(--button-weight)", lineHeight: "var(--button-lh)", letterSpacing: "var(--button-ls)",
-        borderRadius: "var(--radius-pill)", minHeight: sm ? 36 : 44, whiteSpace: "nowrap",
+        borderRadius: sm ? "var(--radius-md)" : "var(--radius-btn)", minHeight: sm ? 40 : 56, whiteSpace: "nowrap",
         textDecoration: variant === "tertiary" && hover ? "underline" : "none", textUnderlineOffset: 4,
         opacity: disabled ? 0.35 : 1,
         transform: pressed && !disabled ? "scale(var(--press-scale))" : "none",
-        transition: "transform var(--duration-fast) var(--ease-standard), background var(--duration-base)",
+        transition: "transform var(--duration-fast) var(--ease-standard), background var(--duration-base), box-shadow var(--duration-base)",
         ...VARIANTS[variant],
-        ...(sm && variant !== "tertiary" ? { padding: "6px 14px" } : {}),
-        ...(hover && !disabled && variant === "secondary" ? { background: "var(--color-surface-soft)" } : {}),
+        ...(sm && variant !== "tertiary" ? { padding: "8px 16px" } : {}),
+        ...(hover && !disabled && (variant === "primary" || variant === "magenta") ? { background: "var(--color-coffee-strong)" } : {}),
+        ...(hover && !disabled && variant === "secondary" ? { background: "var(--color-block-mint)" } : {}),
+        ...(hover && !disabled && variant === "outline" ? { boxShadow: "inset 0 0 0 1px var(--color-coffee)", color: "var(--color-coffee-strong)" } : {}),
+        ...(hover && !disabled && variant === "inverse" ? { background: "var(--color-coffee-soft)" } : {}),
         ...style,
       }}
       {...rest}

@@ -7,8 +7,8 @@ export function PillTabs({ options, value, onChange, style }: { options: Option[
     <div
       role="tablist"
       style={{
-        display: "inline-flex", gap: 4, padding: 4, background: "var(--color-canvas)",
-        borderRadius: "var(--radius-pill)", boxShadow: "inset 0 0 0 1px var(--color-hairline)",
+        display: "inline-flex", gap: 6, padding: 6, background: "var(--color-canvas)",
+        borderRadius: "var(--radius-btn)", boxShadow: "var(--elevation-1)",
         maxWidth: "100%", overflowX: "auto", ...style,
       }}
     >
@@ -22,12 +22,12 @@ export function PillTabs({ options, value, onChange, style }: { options: Option[
             aria-selected={sel}
             onClick={() => onChange?.(opt.value)}
             style={{
-              border: "none", cursor: "pointer", whiteSpace: "nowrap", borderRadius: "var(--radius-pill)",
-              padding: "8px 18px", fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 480,
+              border: "none", cursor: "pointer", whiteSpace: "nowrap", borderRadius: "var(--radius-md)",
+              padding: "10px 20px", fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: sel ? 600 : 400,
               lineHeight: 1.4, letterSpacing: "-0.1px",
-              background: sel ? "var(--color-primary)" : "transparent",
-              color: sel ? "var(--color-on-primary)" : "var(--color-ink)",
-              transition: "background var(--duration-base) var(--ease-standard)",
+              background: sel ? "var(--color-primary)" : "rgba(237,237,237,0.35)",
+              color: sel ? "var(--color-on-primary)" : "var(--color-roast)",
+              transition: "background var(--duration-base) var(--ease-standard), color var(--duration-base)",
             }}
           >
             {opt.label}

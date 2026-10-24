@@ -25,15 +25,15 @@ interface TopNavProps {
   style?: CSSProperties;
 }
 
-const bar: CSSProperties = { width: 16, height: 1.5, background: "#000" };
+const bar: CSSProperties = { width: 16, height: 1.5, background: "var(--color-inverse-ink)" };
 const separator: CSSProperties = { height: 1, background: "var(--color-hairline-soft)", margin: "8px 0" };
 
 function MenuRow({ icon, label, onClick }: { icon?: ReactNode; label: string; onClick: () => void }) {
   return (
     <button role="menuitem" onClick={onClick}
-      className="flex w-full items-center gap-[14px] px-5 text-left transition-colors hover:bg-[var(--color-surface-soft)] focus-visible:bg-[var(--color-surface-soft)] focus-visible:outline-none"
+      className="flex w-full items-center gap-[14px] px-5 text-left transition-colors hover:bg-[var(--color-coffee-soft)] focus-visible:bg-[var(--color-coffee-soft)] focus-visible:outline-none"
       style={{ height: 44, border: "none", cursor: "pointer", fontFamily: "var(--font-sans)", fontSize: 16, fontWeight: 400, letterSpacing: "-0.1px", color: "var(--color-ink)" }}>
-      <span aria-hidden="true" className="flex w-5 flex-none items-center justify-center opacity-80">{icon}</span>
+      <span aria-hidden="true" className="flex w-5 flex-none items-center justify-center text-[var(--color-coffee)]">{icon}</span>
       <span className="flex-1">{label}</span>
       <ChevronRight aria-hidden="true" size={16} strokeWidth={1.75} className="flex-none opacity-50" />
     </button>
@@ -69,26 +69,31 @@ export function TopNav({
   const groups = menuGroups ?? [links];
 
   return (
-    <header ref={headerRef} style={{ position: "sticky", top: 0, zIndex: 20, background: "var(--color-canvas)", ...style }}>
+    <header ref={headerRef} style={{ position: "sticky", top: 0, zIndex: 20, background: "var(--gradient-dark)", color: "var(--color-inverse-ink)", ...style }}>
       {/* Below 560px the bar tightens and the secondary button moves into the dropdown so everything fits on one row. */}
       <div className="flex items-center gap-6 px-6 max-[560px]:gap-3 max-[560px]:px-4" style={{ height: "var(--nav-height)" }}>
-        <a onClick={() => go(null)} style={{ fontSize: 22, fontWeight: 540, letterSpacing: "-0.6px", textDecoration: "none", cursor: "pointer", color: "var(--color-ink)", whiteSpace: "nowrap", flex: "none" }}>{brand}</a>
+        <a onClick={() => go(null)} style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 21, fontWeight: 600, letterSpacing: "-0.5px", textDecoration: "none", cursor: "pointer", color: "var(--color-inverse-ink)", whiteSpace: "nowrap", flex: "none" }}>
+          <span aria-hidden="true" style={{ width: 32, height: 32, borderRadius: "var(--radius-sm)", background: "var(--color-coffee)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ width: 10, height: 10, borderRadius: "50%", boxShadow: "0 0 0 3px #fff" }} />
+          </span>
+          {brand}
+        </a>
         {compact ? (
           <div style={{ flex: 1 }} />
         ) : (
           <nav style={{ display: "flex", gap: 2, flex: 1 }}>
             {links.map((l) => (
               <Button key={l} variant="tertiary" size="sm" onClick={() => go(l)}
-                style={{ fontWeight: active === l ? 540 : 330, textDecoration: active === l ? "underline" : "none" }}>{l}</Button>
+                style={{ color: active === l ? "var(--color-inverse-ink)" : "var(--color-inverse-ink-soft)", fontWeight: active === l ? 600 : 400, textDecoration: active === l ? "underline" : "none" }}>{l}</Button>
             ))}
           </nav>
         )}
-        {!compact && <Button variant="tertiary" size="sm" style={{ fontWeight: 330 }}>{signInLabel}</Button>}
-        <Button variant="outline" size="sm" onClick={onSecondary} style={secondaryStyle} className={compact ? "max-[560px]:!hidden" : undefined}>{secondaryLabel}</Button>
+        {!compact && <Button variant="tertiary" size="sm" style={{ fontWeight: 400, color: "var(--color-inverse-ink-soft)" }}>{signInLabel}</Button>}
+        <Button variant="outline" size="sm" onClick={onSecondary} style={{ background: "var(--color-charcoal)", color: "var(--color-inverse-ink)", boxShadow: "none", ...secondaryStyle }} className={compact ? "max-[560px]:!hidden" : undefined}>{secondaryLabel}</Button>
         <Button variant="primary" size="sm" onClick={onPrimary} style={{ flex: "none", ...primaryStyle }}>{primaryLabel}</Button>
         {compact && (
           <button aria-label="Menu" aria-haspopup="menu" aria-expanded={open} aria-controls="topnav-menu" onClick={() => setOpen(!open)}
-            style={{ width: 40, height: 40, flex: "none", border: "none", background: open ? "var(--color-hairline)" : "var(--color-surface-soft)", borderRadius: "var(--radius-full)", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, transition: "background var(--duration-base)" }}>
+            style={{ width: 40, height: 40, flex: "none", border: "none", background: open ? "var(--color-coffee)" : "var(--color-charcoal)", borderRadius: "var(--radius-md)", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, transition: "background var(--duration-base)" }}>
             <span style={bar} /><span style={bar} />
           </button>
         )}
@@ -105,8 +110,8 @@ export function TopNav({
             style={{
               position: "absolute", top: "calc(var(--nav-height) + 6px)", right: 16,
               width: "min(320px, calc(100vw - 32px))", transformOrigin: "top right",
-              background: "var(--color-canvas)", borderRadius: 16, padding: "8px 0",
-              boxShadow: "0 0 0 1px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.16)",
+              background: "var(--color-canvas)", borderRadius: "var(--radius-lg)", padding: "8px 0",
+              boxShadow: "0 0 0 1px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.16)", overflow: "hidden",
             }}
           >
             {groups.map((group, gi) => (

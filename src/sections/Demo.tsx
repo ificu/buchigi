@@ -6,8 +6,8 @@ import { cn } from "@/lib/utils";
 // Grey preview tile (.tile) with the spotlight glow border.
 function Tile({ className, children }: { className?: string; children: ReactNode }) {
   return (
-    <GlowCard customSize glowColor="blue" backdrop="var(--surface-tile)" radius={24}
-      className={cn("block rounded-[24px] p-8 shadow-none backdrop-blur-none max-[560px]:p-5", className)}>
+    <GlowCard customSize glowColor="coffee" backdrop="var(--surface-tile)" radius={20}
+      className={cn("block rounded-[20px] p-8 shadow-none backdrop-blur-none max-[560px]:p-5", className)}>
       {children}
     </GlowCard>
   );
@@ -30,7 +30,7 @@ const ROWS: [label: string, width: number, color: string, tag: string][] = [
   ["단어 떠올리기", 64, "pink", "살펴봐요"],
   ["대화 즐거움", 88, "lilac", "즐거워요"],
 ];
-const DAYS: [day: string, color?: string][] = [["25"], ["26"], ["27", "mint"], ["28"], ["29", "mint"], ["30", "lime"], ["31"]];
+const DAYS: [day: string, color?: string][] = [["25"], ["26"], ["27", "mint"], ["28"], ["29", "mint"], ["30", "coral"], ["31"]];
 const RECENT = [
   ["제주도 가족 여행", "10월 22일 · 즐겁게 이야기하셨어요", "mint"],
   ["손주 이름 부르기", "10월 19일 · 잠시 머뭇거리셨어요", "pink"],
@@ -42,25 +42,25 @@ function ChildView() {
     <div className="g2">
       <Tile>
         <h3 className="t-headline">이번 달 대화 기록</h3>
-        <p className="t-body-sm">어머니 · 김순자 님 · 2026년 10월</p>
-        <div className="num" style={{ marginTop: 24 }}>11<span className="t-subhead" style={{ marginLeft: 8 }}>번 대화했어요</span></div>
+        <p className="t-body-sm" style={{ color: "var(--text-muted)" }}>어머니 · 김순자 님 · 2026년 10월</p>
+        <div className="num" style={{ marginTop: 24, color: "var(--color-coffee)" }}>11<span className="t-subhead" style={{ marginLeft: 8, color: "var(--color-ink)" }}>번 대화했어요</span></div>
         <div style={{ display: "flex", flexDirection: "column", gap: 14, marginTop: 28 }}>
           {ROWS.map(([l, w, c, t]) => (
             <div key={l} style={{ display: "grid", gridTemplateColumns: "minmax(84px,150px) minmax(0,1fr)", gap: 12, alignItems: "center" }}>
               <span className="read" style={{ fontSize: 19 }}>{l}</span>
-              <div className="bar"><span style={{ width: w + "%", background: `var(--color-block-${c})` }}><i>{t}</i></span></div>
+              <div className="bar" style={{ background: "#fff" }}><span style={{ width: w + "%", background: `var(--color-block-${c})` }}><i>{t}</i></span></div>
             </div>
           ))}
         </div>
-        <p className="t-body-sm" style={{ marginTop: 20 }}>진단이 아닌 대화 기록이에요. 걱정되는 변화가 이어지면 전문 상담을 연결해 드려요.</p>
+        <p className="t-body-sm" style={{ marginTop: 20, color: "var(--text-muted)" }}>진단이 아닌 대화 기록이에요. 걱정되는 변화가 이어지면 전문 상담을 연결해 드려요.</p>
       </Tile>
       <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-md)" }}>
         <Tile>
           <h3 className="t-headline">최근 대화</h3>
           {RECENT.map(([t, s, c]) => (
-            <div key={t} style={{ background: "#fff", borderRadius: "var(--radius-md)", padding: "16px 20px", marginTop: 12, display: "flex", gap: 14 }}>
-              <span style={{ ...dot(c), boxShadow: "inset 0 0 0 1px rgba(0,0,0,.2)", flex: "none", marginTop: 8 }}></span>
-              <div><div className="t-link">{t}</div><div className="t-body-sm">{s}</div></div>
+            <div key={t} style={{ background: "#fff", borderRadius: "var(--radius-btn)", padding: "16px 20px", marginTop: 12, display: "flex", gap: 14 }}>
+              <span style={{ ...dot(c), boxShadow: "inset 0 0 0 1px rgba(0,0,0,.12)", flex: "none", marginTop: 8 }}></span>
+              <div><div className="t-link">{t}</div><div className="t-body-sm" style={{ color: "var(--text-muted)" }}>{s}</div></div>
             </div>
           ))}
         </Tile>
@@ -68,11 +68,11 @@ function ChildView() {
           <h3 className="t-headline">10월 가족 달력</h3>
           <div className="cal">
             {["일", "월", "화", "수", "목", "금", "토"].map((d) => <span key={d} className="t-body-sm">{d}</span>)}
-            {DAYS.map(([d, c]) => <b key={d} style={{ background: c ? `var(--color-block-${c})` : "transparent", fontWeight: c ? 540 : 400 }}>{d}</b>)}
+            {DAYS.map(([d, c]) => <b key={d} style={{ background: c ? `var(--color-block-${c})` : "transparent", fontWeight: c ? 600 : 400, borderRadius: "var(--radius-md)" }}>{d}</b>)}
           </div>
           <div style={{ display: "flex", gap: 20, marginTop: 16, flexWrap: "wrap" }} className="t-body-sm">
             <span style={{ display: "flex", gap: 8, alignItems: "center" }}><i style={dot("mint")}></i>추억 대화</span>
-            <span style={{ display: "flex", gap: 8, alignItems: "center" }}><i style={dot("lime")}></i>아버지 생신</span>
+            <span style={{ display: "flex", gap: 8, alignItems: "center" }}><i style={dot("coral")}></i>아버지 생신</span>
           </div>
         </Tile>
       </div>
@@ -89,18 +89,18 @@ const STEPS = [
 function ParentView() {
   return (
     <div style={{ display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap" }}>
-      <GlowCard customSize glowColor="orange" backdrop="var(--color-block-cream)" radius={32}
-        className="flex justify-center rounded-[32px] px-6 py-8 shadow-none backdrop-blur-none" style={{ flex: "0 1 420px" }}>
+      <GlowCard customSize glowColor="coffee" backdrop="var(--color-block-cream)" radius={24}
+        className="flex justify-center rounded-[24px] px-6 py-8 shadow-none backdrop-blur-none" style={{ flex: "0 1 420px" }}>
         <div className="phone"><div className="screen">
-          <div style={{ padding: "34px 24px 20px", textAlign: "center", background: "var(--color-surface-soft)" }}>
-            <div className="t-body-sm">카카오톡 · 오늘 오전 10:00</div>
-            <div style={{ fontSize: 28, fontWeight: 540 }}>1년 전 오늘</div>
+          <div style={{ padding: "34px 24px 20px", textAlign: "center" }}>
+            <div className="t-body-sm" style={{ color: "var(--text-muted)" }}>카카오톡 · 오늘 오전 10:00</div>
+            <div style={{ fontSize: 26, fontWeight: 600 }}>1년 전 오늘</div>
           </div>
-          <div style={{ flex: 1, minHeight: 0, padding: 20, display: "flex", flexDirection: "column", gap: 14, background: "var(--color-surface-soft)" }}>
+          <div style={{ flex: 1, minHeight: 0, padding: 20, display: "flex", flexDirection: "column", gap: 14 }}>
             {/* The square photo shrinks to fit so the 영상 보기 button always stays inside the screen. */}
-            <div className="ph" style={{ flex: 1, minHeight: 0, background: "var(--color-block-pink)", flexDirection: "column", justifyContent: "flex-end", alignItems: "flex-start", gap: 10 }}>
-              <img src={`${import.meta.env.BASE_URL}assets/chuseok.jpg`} alt="작년 추석, 가족이 함께 송편을 빚는 모습" style={{ flex: "1 1 auto", minHeight: 0, aspectRatio: "1 / 1", maxWidth: "100%", objectFit: "cover", alignSelf: "center", borderRadius: 6 }} />
-              <span className="t-body-sm" style={{ fontWeight: 480 }}>작년 추석, 온 가족 영상 (영상 자리)</span>
+            <div className="ph" style={{ flex: 1, minHeight: 0, background: "#fff", flexDirection: "column", justifyContent: "flex-end", alignItems: "flex-start", gap: 10, padding: 8, boxShadow: "0 4px 16px rgba(31,32,40,.06)" }}>
+              <img src={`${import.meta.env.BASE_URL}assets/chuseok.jpg`} alt="작년 추석, 가족이 함께 송편을 빚는 모습" style={{ flex: "1 1 auto", minHeight: 0, aspectRatio: "1 / 1", maxWidth: "100%", objectFit: "cover", alignSelf: "center", borderRadius: "var(--radius-md)" }} />
+              <span className="t-body-sm" style={{ fontWeight: 600, padding: "0 6px 4px" }}>작년 추석, 온 가족 영상 (영상 자리)</span>
             </div>
             <div className="bubble">어머니, 1년 전 오늘 추석 영상이 도착했어요.</div>
           </div>
@@ -110,8 +110,8 @@ function ParentView() {
       <div style={{ flex: "1 1 360px", display: "flex", flexDirection: "column", gap: "var(--space-md)" }}>
         {STEPS.map(([t, b], i) => (
           <Tile key={t} className="flex gap-[18px] p-6">
-            <span style={{ width: 48, height: 48, flex: "none", borderRadius: "50%", background: "#000", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 540, fontSize: 20 }}>{i + 1}</span>
-            <div><div className="t-headline">{t}</div><p className="read">{b}</p></div>
+            <span style={{ width: 48, height: 48, flex: "none", borderRadius: "var(--radius-md)", background: "var(--color-coffee)", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 600, fontSize: 20 }}>{i + 1}</span>
+            <div><div className="t-headline">{t}</div><p className="read" style={{ margin: "4px 0 0", color: "var(--color-roast)" }}>{b}</p></div>
           </Tile>
         ))}
       </div>
