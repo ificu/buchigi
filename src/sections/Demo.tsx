@@ -99,7 +99,7 @@ function ParentView() {
           <div style={{ flex: 1, minHeight: 0, padding: 20, display: "flex", flexDirection: "column", gap: 14, background: "var(--color-surface-soft)" }}>
             {/* The square photo shrinks to fit so the 영상 보기 button always stays inside the screen. */}
             <div className="ph" style={{ flex: 1, minHeight: 0, background: "var(--color-block-pink)", flexDirection: "column", justifyContent: "flex-end", alignItems: "flex-start", gap: 10 }}>
-              <img src="/assets/chuseok.jpg" alt="작년 추석, 가족이 함께 송편을 빚는 모습" style={{ flex: "1 1 auto", minHeight: 0, aspectRatio: "1 / 1", maxWidth: "100%", objectFit: "cover", alignSelf: "center", borderRadius: 6 }} />
+              <img src={`${import.meta.env.BASE_URL}assets/chuseok.jpg`} alt="작년 추석, 가족이 함께 송편을 빚는 모습" style={{ flex: "1 1 auto", minHeight: 0, aspectRatio: "1 / 1", maxWidth: "100%", objectFit: "cover", alignSelf: "center", borderRadius: 6 }} />
               <span className="t-body-sm" style={{ fontWeight: 480 }}>작년 추석, 온 가족 영상 (영상 자리)</span>
             </div>
             <div className="bubble">어머니, 1년 전 오늘 추석 영상이 도착했어요.</div>

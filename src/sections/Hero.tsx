@@ -33,7 +33,7 @@ function CallPhone() {
       </div>
       <div style={{ flex: 1, minHeight: 0, padding: 20, display: "flex", flexDirection: "column", gap: 14, background: "var(--color-surface-soft)" }}>
         {/* The photo gives up height first so the call buttons below always stay inside the screen. */}
-        <div className="ph" style={{ aspectRatio: "4/3", flexShrink: 1, minHeight: 0, background: "var(--color-block-mint) url(/assets/jeju.jpg) center/cover", padding: 12 }}>
+        <div className="ph" style={{ aspectRatio: "4/3", flexShrink: 1, minHeight: 0, background: `var(--color-block-mint) url(${import.meta.env.BASE_URL}assets/jeju.jpg) center/cover`, padding: 12 }}>
           <span className="t-body-sm" style={{ fontWeight: 480, background: "rgba(255,255,255,.92)", borderRadius: 999, padding: "4px 12px" }}>2019년 여름, 제주도 가족 여행</span>
         </div>
         <div className="bubble">어머니, 손주가 처음 바다에 들어갔던 날 기억나세요?</div>
