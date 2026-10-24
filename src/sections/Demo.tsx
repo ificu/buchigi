@@ -1,6 +1,8 @@
 import { useState, type ReactNode } from "react";
 import { Button, PillTabs } from "@/components/ds";
+import { ChevronLeft, Clapperboard, Play } from "lucide-react";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { IPhone, StatusBar } from "@/components/ui/iphone";
 import { cn } from "@/lib/utils";
 
 // Grey preview tile (.tile) with the spotlight glow border.
@@ -90,22 +92,38 @@ function ParentView() {
   return (
     <div style={{ display: "flex", gap: 48, alignItems: "center", flexWrap: "wrap" }}>
       <GlowCard customSize glowColor="coffee" backdrop="var(--color-block-cream)" radius={24}
-        className="flex justify-center rounded-[24px] px-6 py-8 shadow-none backdrop-blur-none" style={{ flex: "0 1 420px" }}>
-        <div className="phone"><div className="screen">
-          <div style={{ padding: "34px 24px 20px", textAlign: "center" }}>
-            <div className="t-body-sm" style={{ color: "var(--text-muted)" }}>카카오톡 · 오늘 오전 10:00</div>
-            <div style={{ fontSize: 26, fontWeight: 600 }}>1년 전 오늘</div>
-          </div>
-          <div style={{ flex: 1, minHeight: 0, padding: 20, display: "flex", flexDirection: "column", gap: 14 }}>
-            {/* The square photo shrinks to fit so the 영상 보기 button always stays inside the screen. */}
-            <div className="ph" style={{ flex: 1, minHeight: 0, background: "#fff", flexDirection: "column", justifyContent: "flex-end", alignItems: "flex-start", gap: 10, padding: 8, boxShadow: "0 4px 16px rgba(31,32,40,.06)" }}>
-              <img src={`${import.meta.env.BASE_URL}assets/chuseok.jpg`} alt="작년 추석, 가족이 함께 송편을 빚는 모습" style={{ flex: "1 1 auto", minHeight: 0, aspectRatio: "1 / 1", maxWidth: "100%", objectFit: "cover", alignSelf: "center", borderRadius: "var(--radius-md)" }} />
-              <span className="t-body-sm" style={{ fontWeight: 600, padding: "0 6px 4px" }}>작년 추석, 온 가족 영상 (영상 자리)</span>
+        className="hero-stage flex justify-center rounded-[24px] px-6 py-10 shadow-none backdrop-blur-none" style={{ flex: "0 1 420px" }}>
+        <IPhone>
+          <StatusBar tone="dark" time="10:00" />
+          <div style={{ flex: "none", display: "flex", alignItems: "center", gap: 10, padding: "4px 16px 12px", borderBottom: "1px solid var(--color-hairline-soft)", background: "#fff" }}>
+            <span style={{ width: 36, height: 36, flex: "none", borderRadius: 12, background: "var(--color-surface-soft)", display: "inline-flex", alignItems: "center", justifyContent: "center" }}><ChevronLeft size={20} strokeWidth={2} /></span>
+            <div style={{ flex: 1, minWidth: 0, lineHeight: 1.3, whiteSpace: "nowrap" }}>
+              <div style={{ fontSize: 16, fontWeight: 600 }}>1년 전 오늘</div>
+              <div style={{ fontSize: 11, color: "var(--text-muted)" }}>카카오톡 · 오늘 오전 10:00</div>
             </div>
-            <div className="bubble">어머니, 1년 전 오늘 추석 영상이 도착했어요.</div>
+            <span style={{ width: 32, height: 32, flex: "none", borderRadius: "50%", background: "var(--color-coffee)", color: "#fff", display: "inline-flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 600 }}>부</span>
           </div>
-          <div style={{ padding: "18px 20px 40px" }}><Button fullWidth>영상 보기</Button></div>
-        </div></div>
+          <div style={{ flex: 1, minHeight: 0, overflow: "hidden", padding: "14px 14px 10px", display: "flex", flexDirection: "column", gap: 10 }}>
+            <div style={{ alignSelf: "center", fontSize: 10.5, color: "var(--text-muted)", background: "#efefef", borderRadius: 999, padding: "3px 10px" }}>오늘 오전 10:00</div>
+            {/* The video card shrinks to fit so the 영상 보기 button always stays inside the screen. */}
+            <div style={{ flex: "1 1 auto", minHeight: 0, overflow: "hidden", background: "#fff", borderRadius: 16, padding: 5, boxShadow: "0 2px 10px rgba(31,32,40,.06)", display: "flex", flexDirection: "column" }}>
+              <div style={{ position: "relative", flex: "1 1 auto", minHeight: 0, borderRadius: 12, overflow: "hidden" }}>
+                <img src={`${import.meta.env.BASE_URL}assets/chuseok.jpg`} alt="작년 추석, 가족이 함께 송편을 빚는 모습" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                <span aria-hidden="true" style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, transparent 55%, rgba(0,0,0,.45))" }} />
+                <span aria-hidden="true" style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%,-50%)", width: 48, height: 48, borderRadius: "50%", background: "rgba(255,255,255,.92)", color: "var(--color-coffee)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 6px 18px rgba(0,0,0,.25)" }}><Play size={20} fill="currentColor" style={{ marginLeft: 2 }} /></span>
+                <span style={{ position: "absolute", right: 8, bottom: 8, fontFamily: "Sora", fontSize: 10.5, fontWeight: 600, color: "#fff", background: "rgba(0,0,0,.55)", borderRadius: 6, padding: "2px 6px" }}>0:42</span>
+              </div>
+              <div style={{ flex: "none", display: "flex", alignItems: "center", gap: 5, padding: "7px 5px 2px", whiteSpace: "nowrap", fontSize: 11, fontWeight: 600, color: "var(--color-roast)" }}>
+                <Clapperboard size={12} strokeWidth={2.2} color="var(--color-coffee)" />작년 추석, 온 가족 영상 (영상 자리)
+              </div>
+            </div>
+            <div style={{ flex: "none", display: "flex", alignItems: "flex-end", gap: 6 }}>
+              <div className="app-msg">어머니, 1년 전 오늘 추석 영상이 도착했어요.</div>
+              <span className="app-time">10:00</span>
+            </div>
+          </div>
+          <div style={{ flex: "none", padding: "10px 16px 28px", background: "#fff", borderTop: "1px solid var(--color-hairline-soft)" }}><Button fullWidth iconStart={<Play size={18} fill="currentColor" />}>영상 보기</Button></div>
+        </IPhone>
       </GlowCard>
       <div style={{ flex: "1 1 360px", display: "flex", flexDirection: "column", gap: "var(--space-md)" }}>
         {STEPS.map(([t, b], i) => (
